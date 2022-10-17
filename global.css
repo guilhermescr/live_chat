@@ -55,6 +55,7 @@ body {
 }
 
 .logo_container__logo {
+  cursor: pointer;
   width: 100px;
 }
 
@@ -91,14 +92,14 @@ body {
 
 #main {
   align-items: center;
-  background: #9098ff url('images/temporary_main_background.jpg') center
-    no-repeat fixed;
+  background: #9098ff center no-repeat fixed;
   background-size: cover;
   color: #fff;
   display: flex;
   font-size: 20px;
   justify-content: center;
   min-height: 100vh;
+  padding: 20px 10px;
 }
 
 @keyframes animatedTxt {

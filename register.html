@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="global.css" />
-    <title>Chat In Real Time! | Register</title>
+    <link rel="stylesheet" href="auth.css" />
+    <title>Register - Chat In Real Time!</title>
   </head>
   <body>
     <header id="header">
@@ -41,13 +42,57 @@
     </header>
 
     <main id="main">
-      <h1>
-        <span style="--i: 1">Your</span>
-        <span style="--i: 2">Live</span>
-        <span style="--i: 3">Chat</span>
-        <span style="--i: 4">Is</span>
-        <span style="--i: 5">Here.</span>
-      </h1>
+      <h1>Welcome!</h1>
+      <form id="auth_form">
+        <h2>Register</h2>
+
+        <img
+          class="logo_container__logo"
+          src="images/logo.png"
+          alt="Logo which shows a two chat icon and the TalkingApp text"
+        />
+
+        <div>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button id="authSubmitButton" type="button">Register</button>
+        <button id="clearInputsButton" type="reset">
+          <p>Clear Inputs</p>
+          <img
+            src="images/eraser_icon.png"
+            alt="Eraser Icon used to clear inputs"
+          />
+        </button>
+
+        <!-- This id refers to the current menu: login / register -->
+        <h3 class="toggleAuthMsgButton">
+          Already a user?
+          <a
+            id="openRegisterMenuButton"
+            href="login.html"
+            target="_self"
+            role="button"
+          >
+            <span>SIGN IN</span>
+          </a>
+        </h3>
+      </form>
     </main>
 
     <footer id="footer">
