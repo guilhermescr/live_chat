@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="../assets/images/favicon.ico"
+      href="../assets/images/icons/favicon.ico"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../assets/styles/reset.css" />
-    <link rel="stylesheet" href="../assets/styles/chat.css" />
+    <link rel="stylesheet" href="../assets/styles/styles.css" />
     <title>Chat | TalkingApp</title>
   </head>
-  <body>
-    <header id="header">
+  <body class="chatPage">
+    <header class="header">
       <div class="header__logo_container">
         <img
           class="logo_container__logo"
@@ -25,23 +24,71 @@
 
       <nav class="header__navbar">
         <ul class="header__navbar__list">
-          <li class="header__navbar__item">Home</li>
-          <li class="header__navbar__item">Contacts</li>
+          <li class="header__navbar__item" onclick="hideChat()">Home</li>
         </ul>
       </nav>
 
       <div class="header__user_profile_container">
-        <!-- &#709; is the down arrow -->
-        <h2>
-          FELIPE ERICK AMOEDO BARBOSA DA SILVA
-          <span id="down_arrow">&#709;</span>
-        </h2>
+        <!-- &#709; is a down arrow symbol -->
+        <h2>FELIPE ERICK AMOEDO BARBOSA DA SILVA</h2>
       </div>
     </header>
 
-    <main id="main">
+    <main class="main">
       <div class="main__current_section">
-        <h1>Home</h1>
+        <h1 id="chatPageTitle">Home</h1>
+        <button type="button" class="logout_button">
+          <a href="login.html" target="_self" rel="prev">
+            <p>LOG OUT</p>
+            <svg
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 384.971 384.971"
+              style="enable-background: new 0 0 384.971 384.971"
+              xml:space="preserve"
+            >
+              <g>
+                <g id="Sign_Out">
+                  <path
+                    d="M180.455,360.91H24.061V24.061h156.394c6.641,0,12.03-5.39,12.03-12.03s-5.39-12.03-12.03-12.03H12.03
+             C5.39,0.001,0,5.39,0,12.031V372.94c0,6.641,5.39,12.03,12.03,12.03h168.424c6.641,0,12.03-5.39,12.03-12.03
+             C192.485,366.299,187.095,360.91,180.455,360.91z"
+                  />
+                  <path
+                    d="M381.481,184.088l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46H96.279
+             c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151h247.74l-62.558,63.46c-4.704,4.752-4.704,12.439,0,17.179
+             c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2C386.113,196.588,386.161,188.756,381.481,184.088z"
+                  />
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </svg>
+          </a>
+        </button>
       </div>
 
       <section class="chat_container">
@@ -53,6 +100,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Robson V. Leite</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -61,6 +109,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -69,6 +118,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -77,6 +127,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -85,6 +136,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -93,6 +145,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -101,6 +154,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -109,6 +163,7 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
           <div class="friend">
             <img
@@ -117,54 +172,45 @@
               alt="Friend Profile Picture"
             />
             <h3 class="friend_name">Kaue Francisquini</h3>
+            <span class="message_counter">0</span>
           </div>
         </section>
 
         <section class="chat">
-          <article class="chat_messages">
+          <!-- div used before a chat is selected -->
+          <div class="start_chatting_container">
+            <h4>Choose a contact and start chatting!</h4>
+            <img
+              src="../assets/images/speech_balloon.png"
+              alt="Speech Balloon"
+            />
+          </div>
+
+          <article class="chat_messages hide">
             <div class="user_message_container">
               <p>Olá!</p>
               <h4>21/10/2020 17:44</h4>
             </div>
             <div class="friend_message_container">
-              <p>Olá!</p>
-              <h4>21/10/2020 17:44</h4>
-            </div>
-            <div class="user_message_container">
-              <p>Olá!</p>
-              <h4>21/10/2020 17:44</h4>
-            </div>
-            <div class="friend_message_container">
-              <p>Olá!</p>
-              <h4>21/10/2020 17:44</h4>
-            </div>
-            <div class="user_message_container">
-              <p>Olá!</p>
-              <h4>21/10/2020 17:44</h4>
-            </div>
-            <div class="friend_message_container">
-              <p>Olá!</p>
-              <h4>21/10/2020 17:44</h4>
-            </div>
-            <div class="user_message_container">
               <p>Olá!</p>
               <h4>21/10/2020 17:44</h4>
             </div>
           </article>
 
-          <div class="send_message_container">
+          <form class="send_message_container hide">
             <div class="input_message_container">
-              <input
-                type="text"
+              <textarea
                 id="messageInput"
                 name="messageInput"
                 placeholder="Type something..."
-              />
+              ></textarea>
             </div>
-            <button id="sendMsgButton" type="button">Send</button>
-          </div>
+            <button id="sendMsgButton" type="submit">Send</button>
+          </form>
         </section>
       </section>
     </main>
+
+    <script src="../scripts.js"></script>
   </body>
 </html>

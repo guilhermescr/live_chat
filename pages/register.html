@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="../assets/images/favicon.ico"
+      href="../assets/images/icons/favicon.ico"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../assets/styles/reset.css" />
-    <link rel="stylesheet" href="../assets/styles/global.css" />
-    <link rel="stylesheet" href="../assets/styles/auth.css" />
+    <link rel="stylesheet" href="../assets/styles/styles.css" />
     <title>Register | TalkingApp</title>
   </head>
-  <body>
+  <body class="registerPage">
     <header id="header">
       <div class="header__logo_container">
         <a href="../index.html">
@@ -43,6 +41,46 @@
           src="../assets/images/responsive_burger_menu.png"
           alt="Responsive Burger Bars"
         />
+      </nav>
+
+      <nav class="responsive_navbar hide">
+        <div role="button" class="close_navbar_container">
+          <div class="close_bar_axis" id="leftAxis"></div>
+          <div class="close_bar_axis" id="rightAxis"></div>
+        </div>
+
+        <img
+          src="../assets/images/logo.png"
+          alt="Logo which shows a two chat icon and the TalkingApp text"
+        />
+
+        <ul class="responsive_navbar__list">
+          <li>
+            <a
+              href="../index.html"
+              target="_self"
+              rel="prev"
+              onclick="closeNavbar()"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="login.html"
+              target="_self"
+              rel="next"
+              onclick="closeNavbar()"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a href="register.html" target="_self" onclick="closeNavbar()"
+              >Register</a
+            >
+          </li>
+        </ul>
+
+        <p>Felipe Erick & Guilherme Rocha - 2022</p>
       </nav>
     </header>
 
@@ -76,13 +114,11 @@
             required
           />
         </div>
-        <button id="authSubmitButton" type="button">
-          <a href="chat.html" target="_self" rel="next">Register</a>
-        </button>
+        <button id="authSubmitButton" type="button">Register</button>
         <button id="clearInputsButton" type="reset">
           <p>Clear Inputs</p>
           <img
-            src="../assets/images/eraser_icon.png"
+            src="../assets/images/icons/eraser_icon.png"
             alt="Eraser Icon used to clear inputs"
           />
         </button>
@@ -107,7 +143,7 @@
         Made with
         <img
           class="heart_icon"
-          src="../assets/images/heart_icon.png"
+          src="../assets/images/icons/heart_icon.png"
           alt="Heart Icon"
         />
         by
@@ -136,5 +172,7 @@
         alt="Logo which shows a two chat icon and the TalkingApp text"
       />
     </footer>
+
+    <script src="../scripts.js"></script>
   </body>
 </html>
