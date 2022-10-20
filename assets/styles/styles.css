@@ -111,6 +111,7 @@ body.registerPage #main > h1 {
 }
 
 #header .header__navbar__responsive_burger_menu {
+  cursor: pointer;
   display: none;
 }
 
@@ -134,7 +135,7 @@ body.registerPage #main > h1 {
   height: 40px;
   position: absolute;
   right: 15px;
-  top: 15px;
+  top: 25px;
   width: 40px;
   -webkit-tap-highlight-color: transparent;
 }
