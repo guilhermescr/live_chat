@@ -417,11 +417,6 @@ body.chatPage .header__user_profile_container {
   font-weight: 500;
 }
 
-.header__user_profile_container h2 #down_arrow {
-  font-weight: bold;
-  margin-left: 3px;
-}
-
 body.chatPage .main {
   background-color: #efefef;
   display: flex;
@@ -697,7 +692,7 @@ body.chatPage .main {
   }
 
   .header__user_profile_container {
-    text-align: center;
+    text-align: right;
   }
 
   body.chatPage .header__navbar {
