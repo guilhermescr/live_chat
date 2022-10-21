@@ -612,6 +612,7 @@ body.chatPage .main {
 .kebab_icon_container .kebab_additional_menu {
   animation: 0.15s kebabAdditionalMenuAnimation;
   background-color: #000;
+  border-radius: 10px;
   color: #fff;
   position: absolute;
   width: max-content;
@@ -655,11 +656,11 @@ body.chatPage .main {
   padding: 5px 10px;
 }
 
-.chat_messages p {
+.chat_messages p, pre {
   width: 100%;
   white-space: pre-wrap;
   word-wrap: break-word;
-}
+}/**/
 
 .chat_messages h4 {
   font-weight: 500;

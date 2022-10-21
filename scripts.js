@@ -124,12 +124,17 @@ if (document.querySelector('body.chatPage')) {
     return date;
   }
 
+  function validateMessage() {
+    message = message.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  }
+
   function handleSubmit() {
     if (TEXTAREA_TAG.value.length === 0) return;
 
     TEXTAREA_TAG.value = '';
     TEXTAREA_TAG.focus();
 
+    validateMessage();
     sendMessage();
   }
 
