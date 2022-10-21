@@ -558,7 +558,7 @@ body.chatPage .main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 13px;
   height: 85%;
   overflow-y: auto;
   padding-block: 10px;
@@ -566,8 +566,98 @@ body.chatPage .main {
   width: 100%;
 }
 
+.chat_messages .kebab_icon_container {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+  position: relative;
+  width: max-content;
+}
+
+.user_message_container .kebab_icon_container {
+  padding-left: 5px;
+  padding-right: 2px;
+}
+
+.friend_message_container .kebab_icon_container {
+  padding-right: 5px;
+  padding-left: 2px;
+}
+
+.kebab_icon_container .kebab_dot {
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+}
+
+.user_message_container .kebab_icon_container .kebab_dot {
+  background-color: #eee;
+}
+
+.friend_message_container .kebab_icon_container .kebab_dot {
+  background-color: #111;
+}
+
+@keyframes kebabAdditionalMenuAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.kebab_icon_container .kebab_additional_menu {
+  animation: 0.15s kebabAdditionalMenuAnimation;
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  width: max-content;
+}
+
+.kebab_icon_container .kebab_additional_menu:hover {
+  background-color: #353535;
+  color: #fff;
+  font-weight: 500;
+}
+
+.user_message_container:first-child
+  .kebab_icon_container
+  .kebab_additional_menu {
+  left: 0;
+  top: -25%;
+  transform: translateX(-104%);
+}
+
+.friend_message_container:first-child
+  .kebab_icon_container
+  .kebab_additional_menu {
+  left: 0;
+  top: 0;
+  transform: translate(8%, -20%);
+}
+
+.user_message_container .kebab_icon_container .kebab_additional_menu {
+  left: 0;
+  top: 0;
+  transform: translate(-101%, -100%);
+}
+
+.friend_message_container .kebab_icon_container .kebab_additional_menu {
+  left: 100%;
+  top: 0;
+  transform: translateY(-110%);
+}
+
+.kebab_additional_menu p {
+  padding: 5px 10px;
+}
+
 .chat_messages p {
   width: 100%;
+  white-space: pre-wrap;
   word-wrap: break-word;
 }
 
@@ -579,7 +669,7 @@ body.chatPage .main {
 .chat_messages .friend_message_container {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 7px;
   padding: 10px 15px;
   width: 96%;
 }

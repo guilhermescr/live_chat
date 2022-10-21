@@ -36,21 +36,75 @@ if (document.querySelector('body.chatPage')) {
   const TEXTAREA_TAG = document.getElementById('messageInput');
   const SEND_MESSAGE_BUTTON = document.getElementById('sendMsgButton');
   let message;
+  let kebabMenuIsOpen = false;
 
   function scrollDown() {
     CHAT_MESSAGES_CONTAINER.scrollTo(0, CHAT_MESSAGES_CONTAINER.scrollHeight);
   }
 
+  function openKebabMenu(kebabIcon) {
+    if (kebabMenuIsOpen) return;
+
+    let kebabAdditionalMenu = document.createElement('div');
+    kebabAdditionalMenu.classList.add('kebab_additional_menu');
+
+    kebabAdditionalMenu.innerHTML = `
+      <p onclick="deleteMessage(this)">Delete Message</p>
+    `;
+    kebabIcon.appendChild(kebabAdditionalMenu);
+  }
+
+  function closeKebabMenu() {
+    let KEBAB_ADDITIONAL_MENU = document.querySelector(
+      '.kebab_additional_menu'
+    );
+
+    // KEBAB_ADDITIONAL_MENU.parentElement is the kebab icon. This line removes the kebab menu.
+    if (KEBAB_ADDITIONAL_MENU) {
+      KEBAB_ADDITIONAL_MENU.parentElement.removeChild(KEBAB_ADDITIONAL_MENU);
+    }
+  }
+
+  document.body.onclick = () => {
+    // when the user clicks anywhere on the screen while kebab menu is open
+    if (kebabMenuIsOpen) {
+      kebabMenuIsOpen = false;
+      closeKebabMenu();
+      return;
+    }
+
+    // when the user opens the kebab menu
+    if (document.querySelector('.kebab_additional_menu')) {
+      kebabMenuIsOpen = true;
+      return;
+    }
+  };
+
   function sendMessage() {
     let newMessage = document.createElement('div');
     newMessage.classList.add('user_message_container');
     newMessage.innerHTML = `
+      <div 
+      role="button" 
+      class="kebab_icon_container" 
+      onclick="openKebabMenu(this)"
+      >
+        <div class="kebab_dot"></div>
+        <div class="kebab_dot"></div>
+        <div class="kebab_dot"></div>
+      </div>
       <p>${message}</p>
       <h4>${getDate()}</h4>
     `;
 
     CHAT_MESSAGES_CONTAINER.appendChild(newMessage);
     scrollDown();
+  }
+
+  function deleteMessage(deleteButton) {
+    CHAT_MESSAGES_CONTAINER.removeChild(
+      deleteButton.parentElement.parentElement.parentElement
+    );
   }
 
   function getDate() {
