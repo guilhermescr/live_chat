@@ -10,8 +10,10 @@ if (document.querySelector('body.chatPage')) {
   const CHAT_MESSAGES_CONTAINER = document.querySelector('.chat_messages');
 
   function showChat() {
+    compressFriends();
+
     let contactName = this.children[1].innerHTML;
-    H1_TITLE.innerHTML = contactName;
+    [H1_TITLE.innerHTML, oldMainTitle] = [contactName, contactName];
 
     START_CHATTING_CONTAINER.classList.add('hide');
 
@@ -195,6 +197,14 @@ if (document.querySelector('body.chatPage')) {
     return date;
   }
 
+  function changeTxtToURL() {
+    let urlRegex = /(https?:\/\/[^\s]+)/g;
+
+    message = message.replaceAll(urlRegex, function (url) {
+      return `<a href="${url}" target="_blank" rel="external">${url}</a>`;
+    });
+  }
+
   function handleSubmit() {
     if (TEXTAREA_TAG.value.length === 0) return;
 
@@ -202,6 +212,7 @@ if (document.querySelector('body.chatPage')) {
     TEXTAREA_TAG.focus();
 
     message = message.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    changeTxtToURL();
 
     sendMessage();
   }

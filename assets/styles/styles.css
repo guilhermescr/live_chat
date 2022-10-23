@@ -729,6 +729,15 @@ pre {
   word-wrap: break-word;
 }
 
+.chat_messages p a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.chat_messages p a:hover {
+  font-weight: 500;
+}
+
 .chat_messages h4 {
   font-weight: 500;
 }
@@ -972,7 +981,7 @@ pre {
 
 @media (max-width: 332px) {
   .chat_container {
-    padding-top: 27px;
+    padding-top: 29px;
   }
 
   .fullscreen_buttons {
