@@ -433,7 +433,6 @@ body.chatPage .main {
   box-shadow: 0 2px 5px #00000021;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1%;
   padding: 10px 20px;
   width: 100%;
 }
@@ -472,23 +471,24 @@ body.chatPage .main {
 }
 
 .chat_container {
-  background-color: #fff;
-  box-shadow: 0 0 2px #000;
+  background-color: transparent;
   display: flex;
-  height: 77.1%;
+  height: 80%;
   justify-content: space-between;
   margin: auto;
   overflow-y: auto;
+  padding-top: 30px;
+  position: relative;
   width: 90%;
 }
 
 .fullscreen_buttons {
   display: flex;
   justify-content: space-between;
-  left: 5%;
+  left: 0;
   position: absolute;
-  top: 13.2%;
-  width: 90%;
+  top: 0;
+  width: 100%;
 }
 
 .fullscreen_button {
@@ -517,9 +517,13 @@ body.chatPage .main {
   width: 15px;
 }
 
+.friends,
+.chat {
+  box-shadow: 0 0 2px #000;
+}
+
 .friends {
   background-color: #ddd;
-  border-bottom: 2px solid #ddd;
   display: flex;
   flex-flow: column nowrap;
   gap: 2px;
@@ -612,6 +616,8 @@ body.chatPage .main {
 
 .chat .chat_messages {
   align-items: center;
+  border: 2px solid #ccc;
+  border-top: none;
   display: flex;
   flex-direction: column;
   gap: 13px;
@@ -766,8 +772,10 @@ pre {
 /* SEND MESSAGE */
 .chat .send_message_container {
   align-items: center;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
   display: flex;
-  height: 13%;
+  height: 15%;
   justify-content: center;
   padding: 10px;
   width: 100%;
@@ -870,16 +878,12 @@ pre {
     height: 100vh;
   }
 
-  .main__current_section {
-    margin-bottom: 8%;
-  }
-
   .main .logout_button a {
     padding-right: 0;
   }
 
   .fullscreen_buttons {
-    top: 16.8%;
+    top: 1%;
   }
 
   .fullscreen_button {
@@ -936,6 +940,7 @@ pre {
   }
 
   .chat .send_message_container {
+    border-left: 2px solid #ccc;
     height: 20%;
   }
 
@@ -962,5 +967,25 @@ pre {
     display: block;
     margin-top: 5px;
     text-align: center;
+  }
+}
+
+@media (max-width: 332px) {
+  .chat_container {
+    padding-top: 26px;
+  }
+
+  .fullscreen_buttons {
+    top: 0;
+  }
+}
+
+@media (max-width: 290px) {
+  h1#chatPageTitle {
+    font-size: 20px;
+  }
+
+  .chat_container {
+    padding-top: 44px;
   }
 }

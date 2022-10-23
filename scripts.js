@@ -22,12 +22,15 @@ if (document.querySelector('body.chatPage')) {
   }
 
   function hideChat() {
-    H1_TITLE.innerHTML = 'Home';
+    [H1_TITLE.innerHTML, oldMainTitle] = ['Home', 'Home'];
 
     START_CHATTING_CONTAINER.classList.remove('hide');
 
     CHAT_MESSAGES_CONTAINER.classList.add('hide');
     FORM.classList.add('hide');
+
+    compressFriends();
+    compressChat();
   }
 
   FRIENDS_LIST.forEach(friend => {
@@ -38,44 +41,62 @@ if (document.querySelector('body.chatPage')) {
   const FRIENDS_FULLSCREEN_BUTTON =
     document.getElementById('friends_fullscreen');
   const CHAT_FULLSCREEN_BUTTON = document.getElementById('chat_fullscreen');
-  let [friendsExtended, chatExtended] = [false, false];
+  let [friendsExpanded, chatExpanded] = [false, false];
+  let oldMainTitle;
 
   function toggleFriendsFullscreen() {
-    if (chatExtended) return;
-
-    if (!FRIENDS.classList.contains('friends_fullscreen')) {
-      H1_TITLE.innerHTML = 'Contacts';
-
-      FRIENDS.classList.add('friends_fullscreen');
-      this.firstElementChild.innerHTML = 'Compress Friends';
-
-      CHAT.classList.add('hide');
-      friendsExtended = true;
-    } else {
-      FRIENDS.classList.remove('friends_fullscreen');
-      this.firstElementChild.innerHTML = 'Expand Friends';
-
-      CHAT.classList.remove('hide');
-      friendsExtended = false;
+    if (chatExpanded) {
+      compressChat();
+      expandFriends();
+      return;
     }
+
+    !FRIENDS.classList.contains('friends_fullscreen')
+      ? expandFriends()
+      : compressFriends();
+  }
+
+  function expandFriends() {
+    oldMainTitle = H1_TITLE.innerHTML;
+    H1_TITLE.innerHTML = 'Contacts';
+
+    FRIENDS.classList.add('friends_fullscreen');
+    FRIENDS_FULLSCREEN_BUTTON.firstElementChild.innerHTML = 'Compress Friends';
+
+    CHAT.classList.add('hide');
+    friendsExpanded = true;
+  }
+
+  function compressFriends() {
+    H1_TITLE.innerHTML = oldMainTitle;
+
+    FRIENDS.classList.remove('friends_fullscreen');
+    FRIENDS_FULLSCREEN_BUTTON.firstElementChild.innerHTML = 'Expand Friends';
+
+    CHAT.classList.remove('hide');
+    friendsExpanded = false;
   }
 
   function toggleChatFullscreen() {
-    if (friendsExtended) return;
+    if (friendsExpanded) return;
 
-    if (!CHAT.classList.contains('chat_fullscreen')) {
-      CHAT.classList.add('chat_fullscreen');
-      this.firstElementChild.innerHTML = 'Compress Chat';
+    !CHAT.classList.contains('chat_fullscreen') ? expandChat() : compressChat();
+  }
 
-      FRIENDS.classList.add('hide');
-      chatExtended = true;
-    } else {
-      CHAT.classList.remove('chat_fullscreen');
-      this.firstElementChild.innerHTML = 'Expand Chat';
+  function expandChat() {
+    CHAT.classList.add('chat_fullscreen');
+    CHAT_FULLSCREEN_BUTTON.firstElementChild.innerHTML = 'Compress Chat';
 
-      FRIENDS.classList.remove('hide');
-      chatExtended = false;
-    }
+    FRIENDS.classList.add('hide');
+    chatExpanded = true;
+  }
+
+  function compressChat() {
+    CHAT.classList.remove('chat_fullscreen');
+    CHAT_FULLSCREEN_BUTTON.firstElementChild.innerHTML = 'Expand Chat';
+
+    FRIENDS.classList.remove('hide');
+    chatExpanded = false;
   }
 
   FRIENDS_FULLSCREEN_BUTTON.addEventListener('click', toggleFriendsFullscreen);
