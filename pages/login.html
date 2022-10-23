@@ -86,7 +86,7 @@
 
     <main id="main">
       <h1>Welcome!</h1>
-      <form id="auth_form">
+      <form id="auth_form" method="POST">
         <h2>Login</h2>
 
         <img
@@ -97,10 +97,10 @@
 
         <div>
           <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="E-mail | Ex: user@user.com"
             autocomplete="off"
             required
           />
@@ -110,11 +110,11 @@
             type="password"
             name="password"
             id="password"
-            placeholder="Password"
+            placeholder="Password | Ex: 12345678"
             required
           />
         </div>
-        <button id="authSubmitButton" type="button">Login</button>
+        <button id="authSubmitButton" type="submit">Login</button>
         <button id="clearInputsButton" type="reset">
           <p>Clear Inputs</p>
           <img
