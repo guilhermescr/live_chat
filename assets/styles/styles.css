@@ -477,7 +477,7 @@ body.chatPage .main {
   justify-content: space-between;
   margin: auto;
   overflow-y: auto;
-  padding-top: 30px;
+  padding-top: 31.5px;
   position: relative;
   width: 90%;
 }
@@ -972,7 +972,7 @@ pre {
 
 @media (max-width: 332px) {
   .chat_container {
-    padding-top: 26px;
+    padding-top: 27px;
   }
 
   .fullscreen_buttons {
@@ -980,12 +980,12 @@ pre {
   }
 }
 
-@media (max-width: 290px) {
+@media (max-width: 314px) {
   h1#chatPageTitle {
     font-size: 20px;
   }
 
   .chat_container {
-    padding-top: 44px;
+    padding-top: 43px;
   }
 }
