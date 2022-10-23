@@ -4,11 +4,14 @@ if (document.querySelector('body.chatPage')) {
   const START_CHATTING_CONTAINER = document.querySelector(
     '.start_chatting_container'
   );
-  const FRIENDS = document.querySelectorAll('.friend');
+  const FRIENDS = document.querySelector('.friends');
+  const CHAT = document.querySelector('.chat');
+  const FRIENDS_LIST = document.querySelectorAll('.friend');
   const CHAT_MESSAGES_CONTAINER = document.querySelector('.chat_messages');
 
   function showChat() {
-    H1_TITLE.innerHTML = this.children[1].innerHTML;
+    let contactName = this.children[1].innerHTML;
+    H1_TITLE.innerHTML = contactName;
 
     START_CHATTING_CONTAINER.classList.add('hide');
 
@@ -27,9 +30,56 @@ if (document.querySelector('body.chatPage')) {
     FORM.classList.add('hide');
   }
 
-  FRIENDS.forEach(friend => {
+  FRIENDS_LIST.forEach(friend => {
     friend.addEventListener('click', showChat);
   });
+
+  // FULLSCREEN FRIENDS / FULLSCREEN CHAT
+  const FRIENDS_FULLSCREEN_BUTTON =
+    document.getElementById('friends_fullscreen');
+  const CHAT_FULLSCREEN_BUTTON = document.getElementById('chat_fullscreen');
+  let [friendsExtended, chatExtended] = [false, false];
+
+  function toggleFriendsFullscreen() {
+    if (chatExtended) return;
+
+    if (!FRIENDS.classList.contains('friends_fullscreen')) {
+      H1_TITLE.innerHTML = 'Contacts';
+
+      FRIENDS.classList.add('friends_fullscreen');
+      this.firstElementChild.innerHTML = 'Compress Friends';
+
+      CHAT.classList.add('hide');
+      friendsExtended = true;
+    } else {
+      FRIENDS.classList.remove('friends_fullscreen');
+      this.firstElementChild.innerHTML = 'Expand Friends';
+
+      CHAT.classList.remove('hide');
+      friendsExtended = false;
+    }
+  }
+
+  function toggleChatFullscreen() {
+    if (friendsExtended) return;
+
+    if (!CHAT.classList.contains('chat_fullscreen')) {
+      CHAT.classList.add('chat_fullscreen');
+      this.firstElementChild.innerHTML = 'Compress Chat';
+
+      FRIENDS.classList.add('hide');
+      chatExtended = true;
+    } else {
+      CHAT.classList.remove('chat_fullscreen');
+      this.firstElementChild.innerHTML = 'Expand Chat';
+
+      FRIENDS.classList.remove('hide');
+      chatExtended = false;
+    }
+  }
+
+  FRIENDS_FULLSCREEN_BUTTON.addEventListener('click', toggleFriendsFullscreen);
+  CHAT_FULLSCREEN_BUTTON.addEventListener('click', toggleChatFullscreen);
 
   // CHAT MESSAGES
   const FORM = document.querySelector('.send_message_container');
@@ -124,17 +174,14 @@ if (document.querySelector('body.chatPage')) {
     return date;
   }
 
-  function validateMessage() {
-    message = message.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-  }
-
   function handleSubmit() {
     if (TEXTAREA_TAG.value.length === 0) return;
 
     TEXTAREA_TAG.value = '';
     TEXTAREA_TAG.focus();
 
-    validateMessage();
+    message = message.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+
     sendMessage();
   }
 

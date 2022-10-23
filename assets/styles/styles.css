@@ -423,6 +423,7 @@ body.chatPage .main {
   display: flex;
   flex-direction: column;
   height: 87vh;
+  position: relative;
 }
 
 .main__current_section {
@@ -432,6 +433,7 @@ body.chatPage .main {
   box-shadow: 0 2px 5px #00000021;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1%;
   padding: 10px 20px;
   width: 100%;
 }
@@ -471,19 +473,55 @@ body.chatPage .main {
 
 .chat_container {
   background-color: #fff;
+  box-shadow: 0 0 2px #000;
   display: flex;
-  height: 80%;
+  height: 77.1%;
   justify-content: space-between;
-  overflow-y: auto;
   margin: auto;
+  overflow-y: auto;
   width: 90%;
+}
+
+.fullscreen_buttons {
+  display: flex;
+  justify-content: space-between;
+  left: 5%;
+  position: absolute;
+  top: 13.2%;
+  width: 90%;
+}
+
+.fullscreen_button {
+  align-items: center;
+  background-color: #fafafa;
+  border: none;
+  box-shadow: 0 0 2px #000;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  gap: 10px;
+  justify-content: center;
+  padding: 5px 15px;
+}
+
+.fullscreen_button:hover {
+  background-color: #efefef;
+}
+
+.fullscreen_button:active {
+  background-color: #ddd;
+}
+
+.fullscreen_button img {
+  transform: rotate(45deg);
+  width: 15px;
 }
 
 .friends {
   background-color: #ddd;
   border-bottom: 2px solid #ddd;
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   gap: 2px;
   height: 100%;
   overflow-y: auto;
@@ -498,6 +536,16 @@ body.chatPage .main {
   gap: 10px;
   padding: 15px;
   width: 100%;
+}
+
+.friends_fullscreen {
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.friends_fullscreen .friend {
+  width: 33%;
 }
 
 .friend:hover {
@@ -529,6 +577,10 @@ body.chatPage .main {
   width: 60%;
 }
 
+.chat_fullscreen {
+  width: 100%;
+}
+
 .chat .start_chatting_container {
   align-items: center;
   background: #fff url('../images/start_chatting_background.jpg') top no-repeat
@@ -554,6 +606,10 @@ body.chatPage .main {
   width: 30%;
 }
 
+.chat.chat_fullscreen .start_chatting_container img {
+  width: 20%;
+}
+
 .chat .chat_messages {
   align-items: center;
   display: flex;
@@ -564,6 +620,10 @@ body.chatPage .main {
   padding-block: 10px;
   scroll-behavior: smooth;
   width: 100%;
+}
+
+.chat.chat_fullscreen .chat_messages {
+  padding-inline: 20px;
 }
 
 .chat_messages .kebab_icon_container {
@@ -656,11 +716,12 @@ body.chatPage .main {
   padding: 5px 10px;
 }
 
-.chat_messages p, pre {
+.chat_messages p,
+pre {
   width: 100%;
   white-space: pre-wrap;
   word-wrap: break-word;
-}/**/
+}
 
 .chat_messages h4 {
   font-weight: 500;
@@ -673,6 +734,19 @@ body.chatPage .main {
   gap: 7px;
   padding: 10px 15px;
   width: 96%;
+}
+
+.chat_fullscreen .chat_messages .user_message_container,
+.chat_fullscreen .chat_messages .friend_message_container {
+  max-width: 600px;
+}
+
+.chat_fullscreen .chat_messages .friend_message_container {
+  margin-right: auto;
+}
+
+.chat_fullscreen .chat_messages .user_message_container {
+  align-self: flex-end;
 }
 
 .chat_messages .user_message_container {
@@ -694,6 +768,7 @@ body.chatPage .main {
   align-items: center;
   display: flex;
   height: 13%;
+  justify-content: center;
   padding: 10px;
   width: 100%;
 }
@@ -795,8 +870,20 @@ body.chatPage .main {
     height: 100vh;
   }
 
+  .main__current_section {
+    margin-bottom: 8%;
+  }
+
   .main .logout_button a {
     padding-right: 0;
+  }
+
+  .fullscreen_buttons {
+    top: 16.8%;
+  }
+
+  .fullscreen_button {
+    font-size: 13px;
   }
 
   .chat_container {
@@ -814,10 +901,23 @@ body.chatPage .main {
     max-height: 35%;
   }
 
+  .friends.friends_fullscreen {
+    max-height: 100%;
+  }
+
+  .friends.friends_fullscreen .friend {
+    width: 100%;
+  }
+
   .chat {
     /* 60% */
     height: inherit;
     max-height: 65%;
+  }
+
+  .chat_fullscreen {
+    height: 100%;
+    max-height: 100%;
   }
 
   .chat .start_chatting_container {
@@ -825,8 +925,22 @@ body.chatPage .main {
       no-repeat fixed;
   }
 
+  .chat.chat_fullscreen .chat_messages {
+    padding-inline: 7px;
+  }
+
+  .chat_fullscreen .chat_messages .user_message_container,
+  .chat_fullscreen .chat_messages .friend_message_container {
+    max-width: 96%;
+    width: 100%;
+  }
+
   .chat .send_message_container {
     height: 20%;
+  }
+
+  .chat_fullscreen .send_message_container {
+    height: 14%;
   }
 }
 
